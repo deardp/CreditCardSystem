@@ -2,6 +2,7 @@ package org.com.creditcards.functional.impl;
 
 import org.com.creditcards.functional.impl.utils.Constants;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -61,5 +62,16 @@ public class CardGenerator {
     public static CreditCard generateSilverCard() {
         return new CreditCard(15000, Constants.SILVER_CARD, 35.0, List.of(Constants.TRANSACTION_TYPE_PURCHASE),
                 false, 0);
+    }
+
+    public static List<CreditCard> generateAllTypesOfCreditCards() {
+        List<CreditCard> allCardTypes = new ArrayList<>();
+        allCardTypes.add(generateDefaultCard());
+        allCardTypes.add(generateBasicCard());
+        allCardTypes.add(generateSilverCard());
+        allCardTypes.add(generateActiveCashCard());
+        allCardTypes.add(generateCashEverydayCard());
+        allCardTypes.add(generateSilverCard());
+        return allCardTypes;
     }
 }
