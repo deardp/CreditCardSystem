@@ -4,6 +4,9 @@ import org.com.creditcards.functional.impl.CardGenerator;
 import org.com.creditcards.functional.impl.CreditCard;
 import org.com.creditcards.functional.impl.utils.Constants;
 import org.junit.jupiter.api.Test;
+
+import java.util.Collections;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CreditCardTest {
@@ -107,4 +110,24 @@ public class CreditCardTest {
         assertFalse(silverCard.isBalanceTransferEnabled());
         assertEquals(0.0, silverCard.getBalanceTransferFee());
     }
+    @Test
+    public void testBalanceTransferFeeWhenEnabled() {
+        // Create a credit card with balance transfer enabled
+        CreditCard creditCard = new CreditCard(5000, "Test Card", 20.0,
+                Collections.singletonList("Purchase"), true, 50.0);
+
+        // Check if balance transfer fee is correctly set
+        assertEquals(50.0, creditCard.getBalanceTransferFee());
+    }
+
+    @Test
+    public void testBalanceTransferFeeWhenDisabled() {
+        // Create a credit card with balance transfer disabled
+        CreditCard creditCard = new CreditCard(5000, "Test Card", 20.0,
+                Collections.singletonList("Purchase"), false, 50.0);
+
+        // Check if balance transfer fee is set to 0
+        assertEquals(0, creditCard.getBalanceTransferFee());
+    }
 }
+

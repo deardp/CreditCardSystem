@@ -1,7 +1,6 @@
 package org.com.creditcards.functional.impl;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -40,7 +39,11 @@ public class CreditCard {
         this.latePaymentFee = latePaymentFee;
         this.allowedTransactionTypes = allowedTransactionTypes;
         this.balanceTransferEnabled = balanceTransferEnabled;
-        this.balanceTransferFee = balanceTransferFee;
+        if (balanceTransferEnabled) {
+            this.balanceTransferFee = balanceTransferFee;
+        } else {
+            this.balanceTransferFee = 0;
+        }
     }
 
     // Getters and setters
